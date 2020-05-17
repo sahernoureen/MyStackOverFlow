@@ -1,0 +1,102 @@
+﻿
+@model IPagedList<MyStackOverFlow.Models.Question>
+@using PagedList;
+@using PagedList.Mvc;
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Home Page</title>
+        <link href="~/Styles.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <br />
+
+        <div style="margin-left:120px">
+            <h4>
+                <b>Recent Questions</b>
+            </h4>
+        </div>
+
+
+
+        <div class="nav1">
+
+            <div style="flex-grow: 4 " class="count">
+                <div> @Html.ActionLink("Ask a Question", "Create")</div>
+            </div>
+            <div>
+
+                @using (Html.BeginForm("NewestFirst", "Questions", FormMethod.Get))
+                {
+                    <input type="submit" value="NewestFirst" />
+                }
+            </div>
+            <div>
+                @using (Html.BeginForm("MostAnsweredFirst", "Questions", FormMethod.Get))
+                {
+                    <input type="submit" value="MostAnsweredFirst" />
+                }
+            </div>
+        </div>
+
+        <br />
+        <div class="main">
+
+
+            @foreach (var item in Model)
+            {<br />
+                string Myques = @item.Tilte;
+                <div class="questFlex">
+                    <div class="ansCount"> Votes : @item.QVoteCount</div>
+
+                    <div class="quest" background-color: #6a8caf style="flex-grow: 6">
+
+                        <span style="margin-left:5px"> @Html.ActionLink(Myques, "Details", "Questions", new { id = item.Id }, null)</span>
+                        <div>
+                            <span style="margin-left:250px">Posted By:@item.User.UserName</span>
+                            @if (item.User.Badge != null)
+                            {
+                                <img src=@item.User.Badge style="height : 30px;width : 30px;" />
+                            } on @item.Qdate.ToShortDateString() &nbsp;
+
+
+
+                        </div>
+
+                        <div>
+                            @foreach (var tag in item.Tag)
+                            {
+                                string MyTag = @tag.Title;
+
+                                <span style="margin-left : 20px">
+
+                                    @Html.ActionLink(MyTag, "Details", "Tags", new { id = tag.TagId }, null)
+
+                                </span>
+                            }
+                            <span style="margin-left:120px">
+                               
+                                @Html.ActionLink("VoteUp", "CreateQUpVote", "MemberHelper", new { id = item.Id }, null) |
+                                @Html.ActionLink("VoteDown", "CreateQDownVote", "MemberHelper", new { id = item.Id }, null)
+
+                            </span>
+                        </div>
+                      
+                    </div>
+
+                    <br />
+                </div>
+                <br />
+            }
+
+        </div>
+        <br />
+
+        @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }),
+        new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+    </body>
+
+
+    </html>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyStackOverFlow.Models.Vote>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Question.Tilte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpVote)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DownVote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Question.Tilte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpVote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DownVote)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

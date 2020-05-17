@@ -1,0 +1,98 @@
+﻿body {
+    font-size: medium;
+    font-family: Arial,'Lucida Grande',Verdana,sans-serif;
+    background-image: linear-gradient(to right top, #33549f, #0075b7, #0091b5, #00a99e, #44bc7d);
+    width: 980px;
+    margin: auto;
+}
+
+input, select, textarea {
+    max-width: 450px;
+    background-color: #418476;
+}
+
+#header {
+    width: 900px;
+    background-image: linear-gradient(to right top, #33549f, #0075b7, #0091b5, #00a99e, #44bc7d);
+    margin: 0 auto 0 auto;
+}
+a {
+    background-image: linear-gradient(to right top, #33549f, #0075b7, #0091b5, #00a99e, #44bc7d);
+    color: aquamarine;
+}
+
+.quest {
+    text-decoration-color: #124D7C;
+    border-left-color: #6a8caf;
+    border-left-style:groove;
+    width: 500px;
+    margin-left:2px;
+}
+
+.main {
+    width: 800px;
+    margin: auto;
+    border-style: groove;
+    border-color: #6a8caf;
+    background-image: linear-gradient(to right top, #33549f, #0075b7, #0091b5, #00a99e, #44bc7d);
+}
+.pagination-container {
+    width: 600px;
+    margin: auto;
+}
+
+.nav1 {
+    width: 700px;
+    margin:auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#Header {
+    width: 820px;
+    display: flex;
+    flex-direction: row;
+   justify-content: space-around;
+
+}
+.questFlex {
+    width: 700px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-content:flex-start;
+}
+.ans {
+    width: 600px;
+    margin: auto;
+}
+
+.tagDiv {
+    width: 700px; 
+    display: flex;
+    flex-direction: row; 
+}
+.ans1 {
+    width: 540px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.qdetail{
+    padding-left: 150px;
+}
+
+a.link-icon {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background: url("/favicon_io/favicon-16x16.png");
+}
+a.link-icon1 {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background: url("/favicon_io1/favicon-16x16.png");
+}

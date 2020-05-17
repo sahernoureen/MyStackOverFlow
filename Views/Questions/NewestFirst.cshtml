@@ -1,0 +1,63 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<MyStackOverFlow.Models.Question>
+    <html>
+    <body>
+        <br />
+        <br />
+        <div id="Header">
+            <div>
+                <h4>
+                    <b>Recent Questions</b>
+                </h4>
+            </div>
+
+            <div> @Html.ActionLink("Ask a Question", "Create")</div>
+        </div>
+        <div class="nav1">
+
+            <div style="flex-grow: 4 " class="count">
+                @Model.Count Questions
+            </div>
+            <div>
+
+                @using (Html.BeginForm("NewestFirst", "Questions", FormMethod.Get))
+                {
+                    <input type="submit" value="NewestFirst" />
+                }
+            </div>
+            <div>
+                @using (Html.BeginForm("MostAnsweredFirst", "Questions", FormMethod.Get))
+                {
+                    <input type="submit" value="MostAnsweredFirst" />
+                }
+            </div>
+        </div>
+        <br/>
+
+
+        <div class="main">
+            @foreach (var item in Model)
+            {
+                string Myques = @item.Tilte;
+
+                <div>
+                    @Html.ActionLink(Myques, "Details", "Questions", new { id = item.Id }, null)
+                </div>
+                <div> &nbsp; &nbsp; Date : @item.Qdate.ToShortDateString()  &nbsp; &nbsp;Votes : @item.QVoteCount</div>
+
+                <br />
+            }
+
+        </div>
+
+
+        @Html.PagedListPager(Model, Page => Url.Action("NewestFirst", new
+    {
+     Page,
+
+    }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+
+    </body>
+</html>

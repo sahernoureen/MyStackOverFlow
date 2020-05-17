@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyStackOverFlow.Models.AComment>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="BaseLayout.css" type="text/css" />
+        <title>Wehry Home Page</title>
+
+
+        <link href="~/Styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <br />
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+        <div class="main">
+            @foreach (var com in Model)
+            {
+                <div>@com.Description </div>
+                <div>
+                    <span class="qdetail">
+                        by : @com.User.UserName &nbsp;
+                        <img src=@com.User.Badge style="height : 30px;width : 30px;" />" &nbsp; Date : @com.Comdate.ToShortDateString()
+
+                    </span>
+                </div>
+                <br />
+                @Html.ActionLink("Back To Original Question", "Details", "Questions", new { id = com.AnswerId}, null)
+            }
+
+
+        </div>
+        </body>
+</html>

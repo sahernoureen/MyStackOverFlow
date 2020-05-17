@@ -1,0 +1,119 @@
+﻿
+@model MyStackOverFlow.Models.Question
+   
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="BaseLayout.css" type="text/css" />
+    <title>Wehry Home Page</title>
+    <script><link rel="stylesheet" href="https://icons8.com/icon/116997/prize"></link></script>
+
+
+    <link href="~/Styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <br />
+    <h2>Answers</h2>
+    <div class="main">
+        <br />
+        <div style="margin-left:5px">Question: @Model.Tilte</div>
+        <div style="margin-left:5px">Posted By:  @Model.User.UserName  &nbsp; &nbsp; Date : @Model.Qdate.ToShortDateString() </div>
+        <div style="margin-left:5px">Description : <span style="margin-left:5px">@Model.Description</span> </div>
+        
+        <br />
+   
+     
+
+        <div class="ans1">
+
+            @{
+                int count = 1;
+                foreach (var ans in Model.Answers)
+                {
+
+                    <div class="ansDetails" style="flex-grow: 5">
+                        <div> <b>Answer</b> @count </div>
+
+                        <div>@ans.Description </div>
+                        <div>
+                            <span class="qdetail">
+                                by : @ans.User.UserName  &nbsp;
+                                @if(ans.User.Badge != null){
+                                <img src=@ans.User.Badge style="height : 30px;width : 30px;" />
+                                }
+
+
+                                &nbsp;&nbsp;   Date : @ans.Ansdate.ToShortDateString()
+                                &nbsp; &nbsp; Votes : @ans.AnsVoteCount  &nbsp; &nbsp;
+
+
+
+                            </span>
+                       
+                            <div>
+
+                                @Html.ActionLink("View Comments", "Index", "AComments", new { id = Model.Id }, null)|
+                                @Html.ActionLink("Any Comments?", "Create", "AComments", new { id = Model.Id }, null)
+
+                                &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp;
+                                @Html.ActionLink("UpVote", "CreateAnsUpVote", "MemberHelper", new { qid = Model.Id, ansid = ans.Id }, null) |
+                                @Html.ActionLink("DownVote", "CreateAnsDownVote", "MemberHelper", new { qid = Model.Id, ansid = ans.Id }, null)
+
+                                <br />
+                            </div>
+
+                        </div>
+           
+                    </div>
+
+                
+                    count++;
+                }
+                <br />
+            }
+        </div>
+
+        
+        <br />
+        <div>
+            @foreach (var tag in Model.Tag)
+            {
+                string MyTag = @tag.Title;
+
+            <span style="margin-left : 20px">
+              
+                @Html.ActionLink(MyTag, "Details", "Tags", new { id = tag.TagId }, null)
+
+            </span>
+            }
+          
+        </div>
+        <br />
+        <div>
+            <span style="margin-left:20px"></span>
+                @Html.ActionLink("Post A Answer", "CreateAns", "Answers", new { id = Model.Id }, null) |
+                @Html.ActionLink("Comment", "Create", "QComments", new { id = Model.Id }, null)
+
+                @if (Model.UserId != @ViewBag.UserId)
+                {
+        <span>
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+            @Html.ActionLink("VoteUp", "CreateQUpVote", "MemberHelper", new { id = Model.Id }, null) |
+            @Html.ActionLink("VoteDown", "CreateQDownVote", "MemberHelper", new { id = Model.Id }, null)
+            <span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;Votes : @Model.QVoteCount</span>
+        </span>
+                }
+
+
+
+        </div>
+
+        </div>
+          
+    <br />
+    <br />
+</body>
+</html>
+

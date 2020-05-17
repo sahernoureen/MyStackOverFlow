@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "My StackOverFlow";
+}
+
+    <div class="toShow" >
+        <div class="jumbotron" style="  background-image:linear-gradient(to right top, #2d476c, #195e7d, #167585, #378a85, #619d82)">
+            <h1>Ask a Question</h1>
+            <p class="lead">My StackOverFlow is here to Help you find Solutions to Your Problems </p>
+            <p><b>@Html.ActionLink("Ask Questions", "Create", "Questions")</b> </p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    Here are some Most frequently QUestions related to Technology and programming Languages
+                </p>
+                <p><b>@Html.ActionLink("Recent Questions", "Index", "Questions")</b></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get more Insight</h2>
+                <p>Asp.net, MVC, JavaScript, CSS , Html, React and alot here to Take a look</p>
+                <p><b> @Html.ActionLink("Have a look", "Index", "Questions") </b></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Register Here</h2>
+                <p>You can have an easy access to the Solutions and Experts, by registering </p>
+                <p><b>@Html.ActionLink("Sign Up", "Login", "Account")</b> </p>
+            </div>
+        </div>
+
+    </div>

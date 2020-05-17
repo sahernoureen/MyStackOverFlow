@@ -1,0 +1,47 @@
+﻿@model List<MyStackOverFlow.Models.Question>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>Questions With Tag</h3>
+
+
+<div class="main">
+    @foreach (var quest in Model)
+    {
+
+        <div>@quest.Tilte</div>
+        <div>Posted By:  @quest.User.UserName  &nbsp;
+       &nbsp; Date : @quest.Qdate.ToShortDateString() </div>
+        <div>Description : </div>
+        <div>@quest.Description</div>
+        <br />
+        <div class="ans">
+
+            @{
+                int count = 1;
+
+                foreach (var ans in quest.Answers)
+                {
+                    <div> Answer @count </div>
+
+                    <div>@ans.Description </div>
+                    <div>
+                        <span class="qdetail">
+                            by : @ans.User.UserName &nbsp;
+                            <img src=@ans.User.Badge style="height : 30px;width : 30px;" />"
+                            &nbsp; &nbsp;  @ans.Ansdate.ToShortDateString()
+                            &nbsp; &nbsp; Votes : @ans.AnsVoteCount  &nbsp; &nbsp;
+
+                        </span>
+                    </div>
+                    count++;
+                }
+            }
+        </div>
+        <br /> <br />
+        @Html.ActionLink("Back To Original Question", "Details", "Questions", new { id = quest.Id }, null)
+    }
+</div>
+

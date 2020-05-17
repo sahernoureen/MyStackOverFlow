@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNet.Identity
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="~/Content/NewStyles.css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+
+
+<body>
+    <div id="container">
+        <div id="body_space">
+            <div id="header">
+                <div id="logo-block">
+                    <!-- type your logo and small slogan here -->
+                    <p id="logo">My<span class="logoblue">StackOverFlow</span></p>
+                    <p id="slogan">Help On The Way</p>
+                    <!-- end logo and small slogan -->
+                </div>
+                <!-- login -->
+                <div id="login_top">
+                    <p>login:&nbsp;&nbsp;</p>
+
+                    @if (Request.IsAuthenticated)
+                    {
+
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                        </ul>
+                    }
+                    <!-- end login -->
+                    <!-- search -->
+                    <!-- end search -->
+                </div>
+                <div id="definels">
+
+                    <div class="cls"></div>
+                    <div id="top-nav-bg">
+                        <div id="top-nav">
+                            <!-- start top navigation bar -->
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            </ul>
+                            @Html.Partial("_LoginPartial")
+                            <!-- end top navigation bar -->
+                        </div>
+                    </div>
+                </div>
+                <div id="clouds">
+                    <!-- large slogan here -->
+                    <div id="clouds-slogan1"><p>a very large website slogan</p></div>
+                    <div id="clouds-slogan2"><p>can be placed in this area</p></div>
+                    <!-- end large slogan -->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div>
+            @RenderBody()
+        </div>
+
+/*
+        <div id="footer">
+            <div id="footer-pad">
+                <div class="line"></div>
+                <!-- footer and copyright notice -->
+                <p>This site is &copy; Copyright website My StackOverFlow All rights reserved. </p>
+                <!-- end footer and copyright notice -->
+            </div>
+        </div>*/
+    </div>
+
+</body>
+</html>

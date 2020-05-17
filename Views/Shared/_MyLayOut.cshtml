@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="~/Content/MyStyles.css" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+
+   
+<body>
+    <div id="container">
+        <div id="body_space">
+            <div id="header">
+                <div id="logo-block">
+                    <!-- type your logo and small slogan here -->
+                    <p id="logo">My<span class="logoblue">StackOverFlow</span></p>
+                    <p id="slogan">Help On The Way</p>
+                    <!-- end logo and small slogan -->
+                </div>
+
+                <div id="definels">
+                    <!-- login -->
+                    <div id="login_top">
+                        <p>login:&nbsp;&nbsp;</p>
+                        <form name="login" method="get" action="" target="_parent">
+                            <input name="name" type="text" value="username" class="topinputstyle" />
+                            <p>&nbsp;&nbsp;</p>
+                            <div class="formspace"><input name="email" type="text" value="password" class="topinputstyle" /></div>
+                            <p>&nbsp;&nbsp;</p>
+                            <div class="formspace"><input type="submit" value="" class="loginbutton" /></div>
+                        </form>
+                    </div>
+                    <!-- end login -->
+                    <!-- search -->
+                    <div id="search">
+                        <form name="search" method="get" action="" target="_parent">
+                            <input type="text" class="box" />
+                            <button class="btn" title="Submit Search">Search</button>
+                        </form>
+                    </div>
+                    <!-- end search -->
+                </div>
+                <div class="cls"></div>
+                <div id="top-nav-bg">
+                    <div id="top-nav">
+                        <!-- start top navigation bar -->
+                        <ul>
+                            <li><a href="http://www.webaddresshere.com">Home</a></li>
+                            <li><a href="http://www.webaddresshere.com">Products</a></li>
+                            <li><a href="http://www.webaddresshere.com">Services</a></li>
+                            <li><a href="http://www.webaddresshere.com">Portfolio</a></li>
+                            <li><a href="http://www.webaddresshere.com">About Us</a></li>
+                            <li><a href="http://www.webaddresshere.com">Contact</a></li>
+                            <li><a style="background-image: none;" href="http://www.webaddresshere.com">Support</a></li>
+                        </ul>
+                        <!-- end top navigation bar -->
+                    </div>
+                </div>
+            </div>
+            <div id="clouds">
+                <!-- large slogan here -->
+                <div id="clouds-slogan1"><p>a very large website slogan</p></div>
+                <div id="clouds-slogan2"><p>can be placed in this area</p></div>
+                <!-- end large slogan -->
+            </div>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    <div id="footer">
+        <div id="footer-pad">
+            <div class="line"></div>
+            <!-- footer and copyright notice -->
+            <p>This site is &copy; Copyright website My StackOverFlow All rights reserved. </p>
+            <!-- end footer and copyright notice -->
+        </div>
+    </div>
+
+
+
+</body>
+</html>
